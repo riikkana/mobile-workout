@@ -6,6 +6,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text, BottomNavigation } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreen from './home';
+import SettingsScreen from './settings';
+import ThirdScreen from './history';
 
 
 const Tab = createBottomTabNavigator();
