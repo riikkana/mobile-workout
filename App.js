@@ -1,13 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-import { styles } from './styles/Styles.js';
+import { View } from 'react-native';
+import { Text, Button, TextInput, Provider } from 'react-native-paper';
+import { styles } from './styles/Styles.js'
+import MyComponent from './components/bottomNav.js';
+import { NavigationContainer } from '@react-navigation/native';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={[styles.important, styles.box, {fontSize: 40}]}>Hello!</Text>
-    </View>
+    <PaperProvider>
+      <NavigationContainer>
+        <MyComponent />
+      </NavigationContainer>
+    </PaperProvider>
   );
 }
-
 
