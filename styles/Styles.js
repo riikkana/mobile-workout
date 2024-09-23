@@ -41,12 +41,13 @@ const styles = StyleSheet.create({
     },
 
     pressable: {
-        flexDirection: 'row', // Asettaa ikonin ja tekstin vierekkäin
+        flexDirection: 'row', // ikonin ja teksti vierekkäin
         alignItems: 'center',
         paddingHorizontal: 30,
         padding: 5,
-        borderColor: '#ddd',
+        borderColor: '#6b7280',
         borderWidth: 1,
+        borderRadius: 5,
       },
 
     modal: {
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
         paddingTop: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white', // Tämä varmistaa, ettei taustasivu näy
+        backgroundColor: 'white', // ettei taustasivu näy
       },
     
       container2: {
@@ -62,9 +63,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         paddingVertical: 24,
         paddingHorizontal: 12,
-        flexGrow: 1,
-        flexShrink: 1,
-        flexBasis: 0,
+
         
       },
       item2: {
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 10,
         backgroundColor: 'transparent',
-        borderRadius: 6,
+        borderRadius: 5,
         borderWidth: 1,
       },
       text2: {
@@ -81,6 +80,22 @@ const styles = StyleSheet.create({
         color: '#6b7280',
       },
 
-  });
+      workContainer: {
+          flex: 1,
+          padding: 20,
+      },
+
+      workHeading: {
+          fontSize: 24,
+          fontWeight: 'bold',
+      },
+
+      workItem: {
+          padding: 10,
+          borderBottomWidth: 1,
+          borderBottomColor: '#ccc',
+          },
+      });
+      
 
   export { styles };

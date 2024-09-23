@@ -5,7 +5,7 @@ import { styles } from "../styles/Styles";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
-export default function CalendarComponent() {
+export default function CalendarComponent({ onDateChange }) {
     const [date, setDate] = useState(null);
     const [visible, setVisible] = useState(false);
 
@@ -18,7 +18,9 @@ export default function CalendarComponent() {
       };
 
     const dateSelected = (day) => {
+        console.log("Selected date:", day.dateString);
         setDate(day.dateString);
+        onDateChange(day.dateString); 
         setVisible(false);
     }
 

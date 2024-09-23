@@ -7,7 +7,7 @@ import { Text, BottomNavigation } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreen from './home';
 import SettingsScreen from './settings';
-import ThirdScreen from './history';
+import ThirdScreen from './history-test';
 
 
 const Tab = createBottomTabNavigator();
