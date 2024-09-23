@@ -74,10 +74,22 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderWidth: 1,
       },
+
       text2: {
         fontSize: 13,
         fontWeight: '600',
         color: '#6b7280',
+      },
+
+      HISTORYSUMMARYNAPIT: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 10,
+        backgroundColor: '#4338ca',
+        color: 'white', // tarkista onko tämä erillinen text
+        borderRadius: 5,
+        borderWidth: 1,
+        margin: 5,
       },
 
       workContainer: {
@@ -92,8 +104,13 @@ const styles = StyleSheet.create({
 
       workItem: {
           padding: 10,
-          borderBottomWidth: 1,
-          borderBottomColor: '#ccc',
+          borderWidth: 1,
+          borderColor: '#ccc',
+          borderRadius: 5,
+          backgroundColor: '#dddbf5',
+          paddingBottom: 15,
+          marginBottom: 5,
+
           },
       });
       
