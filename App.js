@@ -2,7 +2,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 import MyComponent from './components/bottomNav.js';
 
-// vielä puuttuu lajien summat, asetukset radiobuttonilla, unit-laskenta, oikea laite
+// vielä puuttuu lajien summat+IKONIT, asetukset radiobuttonilla, 
+// unit-laskenta, oikea laite
 
 const theme = {
   ...DefaultTheme,

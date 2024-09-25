@@ -123,6 +123,32 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
+
+  distanceContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  
+  distanceBox: {
+    backgroundColor: '#98246d',
+    padding: 10,
+    borderRadius: 8,
+    flex: 1,
+    marginHorizontal: 5,
+    alignItems: 'center',
+  },
+  
+  distanceSport: {
+    fontSize: 16,
+    fontWeight: 'white',
+  },
+  
+  distanceValue: {
+    fontSize: 14,
+    color: 'white',
+  },
+  
 });
 
 

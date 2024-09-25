@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, Alert } from "react-native";
 import { styles } from "../styles/Styles";
 import { TextInput } from 'react-native-paper';
 
-export default function Distance({ onDistanceChange }) {
+export default function Distance({ onDistanceChange, selectedDistance }) {
     const [distance, setDistance] = useState('');
+
+    useEffect(() => {
+        setDistance(selectedDistance);
+    }, [selectedDistance]);
 
     const handleDistanceChange = (input) => {
         if (/[^0-9]/.test(input)) {
-            Alert.alert("Hups!", "Vain positiiviset numerot ovat sallittuja.");
+            Alert.alert("Oops!", "Only positive numbers are allowed.");
             return;
         }
         if (input.startsWith('-')) {
-            Alert.alert("Hups!", "Vain positiiviset numerot ovat sallittuja.");
+            Alert.alert("Oops!", "Only positive numbers are allowed.");
             return; // Lopeta funktio, jotta negatiivista arvoa ei aseteta
         }
         setDistance(input); 
@@ -25,8 +29,8 @@ export default function Distance({ onDistanceChange }) {
             <TextInput
                 type="text"
                 keyboardType="numeric"
-                value={distance} // Liitetään TextInput komponentin omaan tilaan
-                onChangeText={handleDistanceChange} // Kutsutaan aina kun teksti muuttuu
+                value={distance} 
+                onChangeText={handleDistanceChange} 
             />
         </View>
     )

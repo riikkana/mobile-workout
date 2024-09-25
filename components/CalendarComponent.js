@@ -5,21 +5,18 @@ import { styles } from "../styles/Styles";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
-export default function CalendarComponent({ onDateChange }) {
-    const [date, setDate] = useState(null);
+export default function CalendarComponent({ date, onDateChange }) {
     const [visible, setVisible] = useState(false);
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const day = String(date.getDate()).padStart(2, '0');
         const month = String(date.getMonth() + 1).padStart(2, '0'); // Kuukaudet ovat 0-indeksoituja
-        const year = date.getFullYear();
-        return `${day}.${month}.${year}`;
+        return `${day}.${month}.${date.getFullYear()}`;
       };
 
     const dateSelected = (day) => {
         console.log("Selected date:", day.dateString);
-        setDate(day.dateString);
         onDateChange(day.dateString); 
         setVisible(false);
     }
@@ -28,7 +25,12 @@ export default function CalendarComponent({ onDateChange }) {
         <View>
             <Modal visible={visible} transparent={false}>
                 <View style={styles.modal}>
-                <Calendar style={{ borderWidth: 1 }} onDayPress={dateSelected} />
+                <Calendar 
+                    style={{ borderWidth: 1 }} 
+                    onDayPress={dateSelected} 
+                    markedDates={{
+                        [date]: { selected: true, selectedColor: 'blue' }
+                    }}/>
                 </View>
             </Modal>
             <Pressable style={styles.pressable} onPress={() =>setVisible(true)}>

@@ -11,6 +11,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //const currentStyle = on ? darkStyle : styles
 
+const tabs = [
+    { name: 'Skiing', icon: 'ski' }, 
+    { name: 'Biking', icon: 'bike-fast' }, 
+    { name: 'Running', icon: 'run-fast' }
+  ];
+
 export default function HomeScreen() {
     const [date, setDate] = useState(''); 
     const [sport, setSport] = useState('');
@@ -21,7 +27,7 @@ export default function HomeScreen() {
         console.log('Saving workout:', { date, sport, distance, duration });
 
         if (!date || !sport || !distance || !duration) {
-            Alert.alert('Täytä kaikki kentät');
+            Alert.alert('Fill all fields, please.');
             return;
         }
 
@@ -32,10 +38,12 @@ export default function HomeScreen() {
             newWorkouts.push(workout);
             await AsyncStorage.setItem('workouts', JSON.stringify(newWorkouts));
             Alert.alert('Workout added!'); // tämä jotenkin muuten !
+            console.log('Before clearing:', { date, sport, distance, duration });
             setDate('');
             setSport('');
             setDistance('');
             setDuration('');
+            console.log('After clearing:', { date, sport, distance, duration });
         } catch (error) {
             Alert.alert('Failed to save workout, try again');
         }
@@ -48,10 +56,10 @@ export default function HomeScreen() {
                 <Text style={styles.heading}>Add new workout</Text>
             </View>
             <View style={{padding: 20}}>
-            <CalendarComponent onDateChange={setDate} />
+            <CalendarComponent date={date} onDateChange={setDate} />
             <Sport onSportChange={setSport} />
-            <Distance onDistanceChange={setDistance} />
-            <Duration onDurationChange={setDuration} />
+            <Distance onDistanceChange={setDistance} selectedDistance={distance} />
+            <Duration onDurationChange={setDuration} selectedDuration={duration} />
             </View>
             <View style={{ paddingTop: 20 }}>
                 <Button 

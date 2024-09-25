@@ -1,14 +1,22 @@
 import { View, Text, TouchableWithoutFeedback, SafeAreaView } from "react-native";
 import { styles } from "../styles/Styles";
-import React, { useState } from 'react'
-import { Button } from "react-native-paper";
+import React, { useState, useEffect } from 'react'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const tabs = [{ name: 'Skiing', icon: 'ski' }, { name: 'Biking', icon: 'bike-fast' }, { name: 'Running', icon: 'run-fast' }];
+const tabs = [
+  { name: 'Skiing', icon: 'ski' }, 
+  { name: 'Biking', icon: 'bike-fast' }, 
+  { name: 'Running', icon: 'run-fast' }
+];
 
-export default function Sport({ onSportChange }) {
+export default function Sport({ onSportChange, selectedSport }) {
+  const [value, setValue] = useState(0);
 
-  const [value, setValue] = React.useState(0);
+  useEffect(() => {
+    // Asetetaan value, jos selectedSport muuttuu
+    const index = tabs.findIndex(tab => tab.name === selectedSport);
+    setValue(index !== -1 ? index : 0); // Aseta 0, jos lajia ei löydy
+}, [selectedSport]);
 
   const handleSportChange = (index) => {
     setValue(index); // Päivitetään valittu index
@@ -21,7 +29,6 @@ export default function Sport({ onSportChange }) {
         {tabs.map((item, index) => {
           const isActive = index === value;
           return (
-
             <View key={item.name} style={{ flex: 1 }}>
               <TouchableWithoutFeedback
                 onPress={() => handleSportChange(index)}>
