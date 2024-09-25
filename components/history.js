@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, FlatList, StyleSheet, Alert } from "react-native";
+import { View, Text, FlatList, Alert, TouchableOpacity } from "react-native";
 import { styles } from "../styles/Styles";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 export default function ThirdScreen() {
   const [workouts, setWorkouts] = useState([]);
@@ -24,13 +26,31 @@ export default function ThirdScreen() {
     }, [])
   );
 
+  const deleteWorkout = async (id) => {
+    try {
+      const updatedWorkouts = workouts.filter((workout, index) => index !== id);
+      setWorkouts(updatedWorkouts);
+      await AsyncStorage.setItem('workouts', JSON.stringify(updatedWorkouts));
+      Alert.alert('Workout deleted');
+    } catch (error) {
+      Alert.alert('Failed to delete workout');
+    }
+  };
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({ item, index }) => (
     <View style={styles.workItem}>
       <Text>Date: {item.date}</Text>
       <Text>Sport: {item.sport}</Text>
       <Text>Distance: {item.distance} km</Text>
       <Text>Duration: {item.duration} min</Text>
+      <TouchableOpacity onPress={() => deleteWorkout(index)}>
+      <MaterialCommunityIcons
+                    name='delete'
+                    size={20}
+                    color='black'
+                    style={{ marginLeft: 320 }}
+                  />
+      </TouchableOpacity>
     </View>
   );
 

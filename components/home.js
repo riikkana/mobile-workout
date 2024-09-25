@@ -21,7 +21,7 @@ export default function HomeScreen() {
         console.log('Saving workout:', { date, sport, distance, duration });
 
         if (!date || !sport || !distance || !duration) {
-            Alert.alert('Please fill in all fields');
+            Alert.alert('Täytä kaikki kentät');
             return;
         }
 
@@ -32,6 +32,10 @@ export default function HomeScreen() {
             newWorkouts.push(workout);
             await AsyncStorage.setItem('workouts', JSON.stringify(newWorkouts));
             Alert.alert('Workout added!'); // tämä jotenkin muuten !
+            setDate('');
+            setSport('');
+            setDistance('');
+            setDuration('');
         } catch (error) {
             Alert.alert('Failed to save workout, try again');
         }

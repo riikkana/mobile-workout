@@ -28,15 +28,15 @@ export default function Sport({ onSportChange }) {
                 <View
                   style={[
                     styles.item2,
-                    isActive && { backgroundColor: '#e0e7ff' },
+                    isActive && { backgroundColor: '#ffe0fb' },
                   ]}>
                   <MaterialCommunityIcons
                     name={item.icon}
                     size={20}
-                    color={isActive ? '#4338ca' : 'black'}
+                    color={isActive ? '#98246d' : 'black'}
                     style={{ marginRight: 8 }}
                   />
-                  <Text style={[styles.text2, isActive && { color: '#4338ca' }]}>
+                  <Text style={[styles.text2, isActive && { color: '#' }]}>
                     {item.name}
                   </Text>
                 </View>
