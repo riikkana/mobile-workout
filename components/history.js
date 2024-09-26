@@ -159,5 +159,3 @@ const renderItem = ({ item, index }) => (
     </View>
   );
 }
-
-// react native paper Dialog "alertille"

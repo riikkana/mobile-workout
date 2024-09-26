@@ -13,14 +13,13 @@ export default function Sport({ onSportChange, selectedSport }) {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-    // Asetetaan value, jos selectedSport muuttuu
     const index = tabs.findIndex(tab => tab.name === selectedSport);
-    setValue(index !== -1 ? index : 0); // Aseta 0, jos lajia ei löydy
+    setValue(index !== -1 ? index : 0);
 }, [selectedSport]);
 
   const handleSportChange = (index) => {
-    setValue(index); // Päivitetään valittu index
-    onSportChange(tabs[index].name); // Kutsutaan callbackia ja välitetään valittu laji
+    setValue(index); 
+    onSportChange(tabs[index].name); 
   };
 
   return (

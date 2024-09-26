@@ -9,7 +9,7 @@ export default function Theme() {
 
 return (
 <View style={styles.radioContainer}>
-          <Text style={styles.radioHeading}>Theme</Text>
+          <Text style={styles.radioHeading}>Theme (not in use)</Text>
           <View style={styles.radioButton}>
             <RadioButton
               value="first"

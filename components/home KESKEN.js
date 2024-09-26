@@ -9,11 +9,11 @@ import Duration from "./duration";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFonts } from 'expo-font';
 
-const tabs = [
+/* const tabs = [
     { name: 'Skiing', icon: 'ski' },
     { name: 'Biking', icon: 'bike-fast' },
     { name: 'Running', icon: 'run-fast' }
-];
+]; */
 
 export default function HomeScreen() {
     const [date, setDate] = useState('');
@@ -49,7 +49,7 @@ export default function HomeScreen() {
             let newWorkouts = existingWorkouts ? JSON.parse(existingWorkouts) : [];
             newWorkouts.push(workout);
             await AsyncStorage.setItem('workouts', JSON.stringify(newWorkouts));
-            Alert.alert('Workout added!'); // tämä jotenkin muuten !   
+            //Alert.alert('Workout added!'); // tämä jotenkin muuten !   
             showDialog('Workout added!');
             setDate('');
             setSport('');
@@ -72,15 +72,25 @@ export default function HomeScreen() {
                 <Distance onDistanceChange={setDistance} selectedDistance={distance} />
                 <Duration onDurationChange={setDuration} selectedDuration={duration} />
             </View>
-            
-        <View style={{ paddingTop: 20 }}>
-                <Button 
-                    style={styles.button} 
-                    mode="contained" 
-                    onPress={saveWorkout}>Add workout</Button>
+            <View>
+                <Button style={styles.button}
+                    mode='contained'
+                    title="Save Workout" 
+                    onPress={saveWorkout}>
+                    Add workout
+                </Button>
+                <Portal>
+                    <Dialog visible={visible} onDismiss={hideDialog}>
+                        <Dialog.Title>Notification</Dialog.Title>
+                        <Dialog.Content>
+                            <Paragraph>{dialogMessage}</Paragraph> {/* Näytä dialogiviesti */}
+                        </Dialog.Content>
+                        <Dialog.Actions>
+                            <PaperButton onPress={hideDialog}>OK</PaperButton>
+                        </Dialog.Actions>
+                    </Dialog>
+                </Portal>
             </View>
-
-
-        </View>
+       </View>
     );
 };

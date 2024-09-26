@@ -3,9 +3,9 @@ import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 import MyComponent from './components/bottomNav.js';
 import { useFonts } from 'expo-font';
 
-// lajilaatikoiden ulkoasu
-// asetukset radiobuttonilla
-// unit-laskenta
+// etusivun painikkeiden ulkoasu
+// lajilaatikoiden ulkoasu: Sport ikonina, päiväys ekana ja selkeämmin
+// alert -> dialog
 // oikea laite
 
 const theme = {
