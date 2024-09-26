@@ -3,18 +3,27 @@ import { View, StyleSheet } from 'react-native';
 
 import { CommonActions } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text, BottomNavigation } from 'react-native-paper';
+import { Text, BottomNavigation, PaperProvider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreen from './home';
 import SettingsScreen from './settings';
 import ThirdScreen from './history';
+import { MD3DarkTheme } from 'react-native-paper';
 
 
 const Tab = createBottomTabNavigator();
+const myTheme = {
+  ...MD3DarkTheme,
+  colors: {
+    ...MD3DarkTheme.colors,
+    primary: '#98246d'
+  }
+}
 
 
 export default function MyComponent() {
   return (
+    <PaperProvider>
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
@@ -93,6 +102,7 @@ export default function MyComponent() {
       />
       
     </Tab.Navigator>
+    </PaperProvider>
   );
 }
 

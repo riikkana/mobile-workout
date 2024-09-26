@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { useFonts } from 'expo-font';
+import { RadioButton } from "react-native-paper";
 
 const styles = StyleSheet.create({
   container: {
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     margin: 15,
     paddingHorizontal: 50,
+  
 
   },
 
@@ -150,6 +152,30 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'white',
   },
+
+  radioButton: {
+    //flex: 1,
+    flexDirection: 'row',
+    alignItems: "center",
+    paddingLeft: 20,
+    color: '#98246d',
+    margin: 5
+    //justifyContent: "center",
+  },
+
+  radioContainer: {
+    borderWidth: 1,
+    borderColor: '#b8b2b7',
+    borderRadius: 5,
+    margin: 10,
+    padding: 1,
+  },
+
+  radioHeading: {
+    fontSize: 18,
+    margin: 10,
+    paddingLeft: 5,
+  }
   
 });
 

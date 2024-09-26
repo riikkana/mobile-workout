@@ -3,7 +3,6 @@ import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 import MyComponent from './components/bottomNav.js';
 import { useFonts } from 'expo-font';
 
-// Fontti!
 // lajilaatikoiden ulkoasu
 // asetukset radiobuttonilla
 // unit-laskenta

@@ -25,10 +25,11 @@ export default function Distance({ onDistanceChange, selectedDistance }) {
 
     return (
         <View>
-            <Text>Distance</Text>
             <TextInput
                 type="text"
                 keyboardType="numeric"
+                mode= "flat"
+                label="Distance"
                 value={distance} 
                 onChangeText={handleDistanceChange} 
             />

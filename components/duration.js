@@ -23,11 +23,12 @@ export default function Duration({ onDurationChange, selectedDuration }) {
     };
 
     return(
-        <View  style= {{paddingTop: 10 }}>
-            <Text>Duration</Text>
+        <View  style= {{paddingTop: 20 }}>
             <TextInput
                 type="text"
-                value={duration} 
+                value={duration}
+                mode= "flat"
+                label="Duration"
                 onChangeText={handleDurationChange} 
                 keyboardType="numeric" 
             />
