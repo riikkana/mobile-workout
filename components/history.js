@@ -8,7 +8,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 export default function ThirdScreen() {
   const [workouts, setWorkouts] = useState([]);
-  const [distances, setDistances] = useState({}); // Tallenna kilometrimäärät lajeittain
+  const [distances, setDistances] = useState({});
+  const [unit, setUnit] = useState('km');
 
   const tabs = [
     { name: 'Skiing', icon: 'ski' },
@@ -16,13 +17,50 @@ export default function ThirdScreen() {
     { name: 'Running', icon: 'run-fast' }
   ];
 
+  const loadUnit = async () => {
+    try {
+      const savedUnit = await AsyncStorage.getItem('distanceUnit');
+      if (savedUnit !== null) {
+        setUnit(savedUnit);
+      }
+    } catch (error) {
+      Alert.alert('Failed to load unit setting');
+    }
+  };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      loadUnit(); // Päivitä yksikkö, kun käyttäjä siirtyy välilehdelle
+    }, [])
+  );
+
+  const convertDistance = (distance) => {
+    if (distance === undefined || distance === null) {
+        console.log('Distance is undefined or null');
+        return '0.00'; 
+    }
+    const dist = parseFloat(distance);
+    
+    if (isNaN(dist)) {
+        console.log('Distance is not a valid number:', distance);
+        return '0.00';
+    }
+
+    if (unit === 'mi') {
+        return (dist * 0.621371).toFixed(2); 
+    }
+
+    return dist.toFixed(2);
+};
+
+  
 
   const loadWorkouts = async () => {
     try {
       const savedWorkouts = await AsyncStorage.getItem('workouts');
       if (savedWorkouts !== null) {
         const parsedWorkouts = JSON.parse(savedWorkouts);
-        parsedWorkouts.forEach(workout => {
+       parsedWorkouts.forEach(workout => {
           if (!workout.sport) {
             console.warn("Treeniobjekti puuttuu 'sport'-ominaisuus:", workout);
           }
@@ -37,17 +75,19 @@ export default function ThirdScreen() {
 
   const calculateDistances = (workouts) => {
     const distancesMap = {};
-
+  
     workouts.forEach(workout => {
+      const distance = parseFloat(convertDistance(workout.distance));
       if (distancesMap[workout.sport]) {
-        distancesMap[workout.sport] += workout.distance; // Lisää etäisyys
+        distancesMap[workout.sport] += distance;
       } else {
-        distancesMap[workout.sport] = workout.distance; // Luo uusi laji
+        distancesMap[workout.sport] = distance;
       }
     });
-
-    setDistances(distancesMap); // Aseta etäisyydet tilaan
+  
+    setDistances(distancesMap);
   };
+  
 
   useFocusEffect(
     React.useCallback(() => {
@@ -66,43 +106,45 @@ export default function ThirdScreen() {
     }
   };
 
-  const renderItem = ({ item, index }) => (
-    <View style={styles.workItem}>
-      <Text>Date: {item.date}</Text>
-      <Text>Sport: {item.sport}</Text>
-      <Text>Distance: {item.distance} km</Text>
-      <Text>Duration: {item.duration} min</Text>
-      <TouchableOpacity onPress={() => deleteWorkout(index)}>
-        <MaterialCommunityIcons
-          name='delete'
-          size={20}
-          color='black'
-          style={{ marginLeft: 320 }}
-        />
-      </TouchableOpacity>
+const renderDistanceBoxes = () => {
+  return (
+    <View style={styles.distanceContainer}>
+      {tabs.map((tab, index) => {
+        const distance = distances[tab.name] || 0;
+        return (
+          <View key={index} style={styles.distanceBox}>
+            <MaterialCommunityIcons
+              name={tab.icon}
+              size={20}
+              color={'white'}
+              style={{ marginRight: 8 }}
+            />
+            <Text style={styles.distanceValue}>
+              {distance} {unit === 'mi' ? 'mi' : 'km'}
+            </Text>
+          </View>
+        );
+      })}
     </View>
   );
+};
 
-  const renderDistanceBoxes = () => {
-    return (
-      <View style={styles.distanceContainer}>
-        {tabs.map((tab, index) => {
-          const distance = distances[tab.name] || 0;
-          return (
-            <View key={index} style={styles.distanceBox}>
-              <MaterialCommunityIcons
-                name={tab.icon}
-                size={20}
-                color={'white'}
-                style={{ marginRight: 8 }}
-              />
-              <Text style={styles.distanceValue}>{distance} km</Text>
-            </View>
-          );
-        })}
-      </View>
-    );
-  };
+const renderItem = ({ item, index }) => (
+  <View style={styles.workItem}>
+    <Text>Date: {item.date}</Text>
+    <Text>Sport: {item.sport}</Text>
+    <Text>Distance: {convertDistance(item.distance)} {unit === 'mi' ? 'mi' : 'km'}</Text>
+    <Text>Duration: {item.duration} min</Text>
+    <TouchableOpacity onPress={() => deleteWorkout(index)}>
+      <MaterialCommunityIcons
+        name='delete'
+        size={20}
+        color='black'
+        style={{ marginLeft: 320 }}
+      />
+    </TouchableOpacity>
+  </View>
+);
 
 
   return (
