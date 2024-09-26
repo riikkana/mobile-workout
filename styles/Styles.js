@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { useFonts } from 'expo-font';
 
 const styles = StyleSheet.create({
   container: {
@@ -29,7 +30,8 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 26,
     fontStyle: "italic",
-    margin: 15
+    margin: 15,
+    fontFamily: 'Ubuntu'
   },
 
   button: {

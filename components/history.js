@@ -107,10 +107,10 @@ export default function ThirdScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Workout History</Text>
+      <Text style={{fontFamily: 'Ubuntu', fontSize: 26, margin: 15}}>Workout History</Text>
       {renderDistanceBoxes()}
       <FlatList
-        data={workouts}
+        data={workouts.slice().reverse()}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
       />

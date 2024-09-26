@@ -1,9 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 import MyComponent from './components/bottomNav.js';
+import { useFonts } from 'expo-font';
 
-// vielä puuttuu lajien summat+IKONIT, asetukset radiobuttonilla, 
-// unit-laskenta, oikea laite
+// Fontti!
+// lajilaatikoiden ulkoasu
+// asetukset radiobuttonilla
+// unit-laskenta
+// oikea laite
 
 const theme = {
   ...DefaultTheme,

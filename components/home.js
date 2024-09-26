@@ -7,7 +7,7 @@ import Distance from "./distance";
 import Sport from "./sport";
 import Duration from "./duration";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { useFonts } from 'expo-font';
 
 //const currentStyle = on ? darkStyle : styles
 
@@ -22,6 +22,14 @@ export default function HomeScreen() {
     const [sport, setSport] = useState('');
     const [distance, setDistance] = useState('');
     const [duration, setDuration] = useState('');
+
+    const [loaded] = useFonts({
+        Ubuntu: require('../assets/fonts/Ubuntu-Medium.ttf'),
+    });
+    
+    if (!loaded) {
+        return null;
+    } 
 
     const saveWorkout = async () => {
         console.log('Saving workout:', { date, sport, distance, duration });
@@ -53,7 +61,7 @@ export default function HomeScreen() {
 
         <View style={styles.container}>
             <View>
-                <Text style={styles.heading}>Add new workout</Text>
+                <Text style={{fontFamily: 'Ubuntu', fontSize: 26, margin: 15}}>Add new workout</Text>
             </View>
             <View style={{padding: 20}}>
             <CalendarComponent date={date} onDateChange={setDate} />

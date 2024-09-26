@@ -65,7 +65,7 @@ export default function MyComponent() {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: 'Lisää treeni',
+          tabBarLabel: 'Add workout',
           tabBarIcon: ({ color, size }) => {
             return <Icon name="calendar" size={size} color={color} />;
           },
@@ -75,7 +75,7 @@ export default function MyComponent() {
         name="Third"
         component={ThirdScreen}
         options={{
-          tabBarLabel: 'Historia',
+          tabBarLabel: 'History',
           tabBarIcon: ({ color, size }) => {
             return <Icon name="history" size={size} color={color} />;
           },
@@ -85,7 +85,7 @@ export default function MyComponent() {
         name="Settings"
         component={SettingsScreen}
         options={{
-          tabBarLabel: 'Asetukset',
+          tabBarLabel: 'Settings',
           tabBarIcon: ({ color, size }) => {
             return <Icon name="cog" size={size} color={color} />;
           },
