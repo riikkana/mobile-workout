@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { View, Text, FlatList, Alert, TouchableOpacity } from "react-native";
 import { styles } from "../styles/Styles";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useFocusEffect, useCallback } from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
@@ -34,12 +34,12 @@ export default function ThirdScreen() {
         await loadUnit(); 
         await loadWorkouts(); 
       };
-      loadData(); // Kutsutaan kun käyttäjä siirtyy välilehdelle
+      loadData(); 
     }, [])
   );
 
   useEffect(() => {
-    calculateDistances(workouts); // etäisyydet, kun yksikkö tai treenit vaihtuvat
+    calculateDistances(workouts); 
   }, [unit, workouts]);
 
   const convertDistance = (distance) => {
@@ -129,7 +129,7 @@ const renderDistanceBoxes = () => {
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-  return date.toLocaleDateString('fi-FI', options).replace(/\./g, '.'); // Vaihda kieli suomeksi
+  return date.toLocaleDateString('fi-FI', options).replace(/\./g, '.');
 };
 
 const renderItem = ({ item }) => {

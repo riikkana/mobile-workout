@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, Alert } from "react-native";
-import { styles } from "../styles/Styles";
+import { View, Alert } from "react-native";
 import { TextInput } from 'react-native-paper';
 
 export default function Distance({ onDistanceChange, selectedDistance }) {

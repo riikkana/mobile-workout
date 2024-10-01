@@ -37,22 +37,20 @@ export default function Units() {
         <View style={styles.radioContainer}>
             <Text style={styles.radioHeading}>Units</Text>
             
-            {/* Kilometers option */}
             <View style={styles.radioButton}>
                 <RadioButton
                     value="km"
                     status={checked === 'km' ? 'checked' : 'unchecked'}
-                    onPress={() => handleUnitChange('km')} // Muuta arvo ja tallenna
+                    onPress={() => handleUnitChange('km')} 
                 />
                 <Text>Kilometers</Text>
             </View>
 
-            {/* Miles option */}
             <View style={styles.radioButton}>
                 <RadioButton
                     value="mi"
                     status={checked === 'mi' ? 'checked' : 'unchecked'}
-                    onPress={() => handleUnitChange('mi')} // Muuta arvo ja tallenna
+                    onPress={() => handleUnitChange('mi')}
                 />
                 <Text>Miles</Text>
             </View>

@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     paddingTop: 50,
     margin: 10,
   },
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 
   calText: {
     fontSize: 16,
-    marginLeft: 10,
+    marginLeft: 5,
     padding: 5
   },
 
@@ -35,9 +35,9 @@ const styles = StyleSheet.create({
   },
 
   pressable: {
-    flexDirection: 'row', // ikonin ja teksti vierekkäin
+    flexDirection: 'row', // ikoni ja teksti vierekkäin
     alignItems: 'center',
-    paddingHorizontal: 30,
+    justifyContent: 'center',
     padding: 5,
     borderColor: '#6b7280',
     borderWidth: 1,
@@ -49,12 +49,12 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white', // ettei taustasivu näy
+    backgroundColor: 'transparent', // ettei taustasivu näy
   },
 
   container2: {
     flexDirection: 'row',
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     paddingVertical: 24,
     paddingHorizontal: 12,
 

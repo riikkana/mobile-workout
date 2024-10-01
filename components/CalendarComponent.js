@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, LocaleConfig } from 'react-native-calendars';
+import { Calendar } from 'react-native-calendars';
 import { View, Modal, Text, Pressable } from 'react-native';
 import { styles } from "../styles/Styles";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';

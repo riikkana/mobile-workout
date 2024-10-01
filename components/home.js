@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Alert } from "react-native";
 import { styles } from "../styles/Styles";
 import React, { useState } from 'react';
 import CalendarComponent from "./CalendarComponent";
-import { Button, PaperButton, Portal, Dialog, Paragraph } from "react-native-paper";
+import { Button } from "react-native-paper";
 import Distance from "./distance";
 import Sport from "./sport";
 import Duration from "./duration";
@@ -79,8 +79,6 @@ export default function HomeScreen() {
                     mode="contained" 
                     onPress={saveWorkout}>Add workout</Button>
             </View>
-
-
         </View>
     );
 };
