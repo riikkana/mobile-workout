@@ -18,7 +18,7 @@ export default function SettingsScreen() {
   return (
     <PaperProvider theme={myTheme}>
       <View style={styles.container}>
-        <Text style={{ fontFamily: 'Ubuntu', fontSize: 26, margin: 15 }}>Settings</Text>
+        <Text style={styles.heading}>Settings</Text>
         <Units />
         <Theme />
       </View>

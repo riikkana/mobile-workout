@@ -67,7 +67,11 @@ export default function ThirdScreen() {
       const savedWorkouts = await AsyncStorage.getItem('workouts');
       if (savedWorkouts !== null) {
         const parsedWorkouts = JSON.parse(savedWorkouts);
-       
+       parsedWorkouts.forEach(workout => {
+          if (!workout.sport) {
+            console.warn("Treeniobjekti puuttuu 'sport'-ominaisuus:", workout);
+          }
+        });
         setWorkouts(parsedWorkouts);
         calculateDistances(parsedWorkouts);
       }
@@ -126,43 +130,27 @@ const renderDistanceBoxes = () => {
   );
 };
 
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-  return date.toLocaleDateString('fi-FI', options).replace(/\./g, '.'); // Vaihda kieli suomeksi
-};
-
-const renderItem = ({ item }) => {
-  const sportData = tabs.find(tab => tab.name === item.sport);
-  const iconName = sportData ? sportData.icon : 'help';
-  
-  return (
+const renderItem = ({ item }) => (
   <View style={styles.workItem}>
-    <View style={styles.workIcon}>
-        <MaterialCommunityIcons
-          name={iconName}
-          size={20}
-          color='black'
-        />
-       <Text style={styles.workText}>{formatDate(item.date)}</Text>
-      </View>
-    <Text style={styles.workText}>Distance: {convertDistance(item.distance)} {unit === 'mi' ? 'mi' : 'km'}</Text>
-    <Text style={styles.workText}>Duration: {item.duration} min</Text>
+    <Text>Date: {item.date}</Text>
+    <Text>Sport: {item.sport}</Text>
+    <Text>Distance: {convertDistance(item.distance)} {unit === 'mi' ? 'mi' : 'km'}</Text>
+    <Text>Duration: {item.duration} min</Text>
     <TouchableOpacity onPress={() => deleteWorkout(item.id)}>
       <MaterialCommunityIcons
         name='delete'
         size={20}
         color='black'
-        style={{ marginLeft: 320}}
+        style={{ marginLeft: 320 }}
       />
     </TouchableOpacity>
   </View>
 );
-};
+
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Workout History</Text>
+      <Text style={{fontFamily: 'Ubuntu', fontSize: 26, margin: 15}}>Workout History</Text>
       {renderDistanceBoxes()}
       <FlatList
         data={workouts.slice().reverse()}

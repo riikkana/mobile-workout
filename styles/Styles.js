@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
-import { useFonts } from 'expo-font';
-import { RadioButton } from "react-native-paper";
+
 
 const styles = StyleSheet.create({
   container: {
@@ -8,13 +7,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingTop: 50,
     margin: 10,
-    //alignItems: 'center',
-    //justifyContent: 'center',
-  },
-
-  important: {
-    color: 'red',
-    fontSize: 30
   },
 
   box: {
@@ -28,11 +20,9 @@ const styles = StyleSheet.create({
   },
 
   heading: {
-    color: 'black',
-    fontSize: 26,
-    fontStyle: "italic",
+    fontFamily: 'Ubuntu', 
+    fontSize: 26, 
     margin: 15,
-    fontFamily: 'Ubuntu'
   },
 
   button: {
@@ -70,6 +60,7 @@ const styles = StyleSheet.create({
 
 
   },
+  
   item2: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -85,26 +76,10 @@ const styles = StyleSheet.create({
     color: '#6b7280',
   },
 
-  HISTORYSUMMARYNAPIT: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 10,
-    backgroundColor: '#98246d',
-    color: 'white', // tarkista onko tämä erillinen text
-    borderRadius: 5,
-    borderWidth: 1,
-    margin: 5,
-  },
-
-  workContainer: {
+/*  workContainer: {
     flex: 1,
     padding: 20,
-  },
-
-  workHeading: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
+  },*/
 
   workItem: {
     padding: 10,
@@ -113,11 +88,23 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: '#ffe0fb',
     paddingBottom: 15,
-    marginBottom: 5,
+    marginBottom: 10,
 
   },
 
-  deleteButton: {
+  workIcon: {
+    flexDirection: 'row', 
+    alignItems: 'flex-start', 
+    marginBottom: 5,
+    marginRight: 10,
+  },
+
+  workText: {
+    marginBottom: 5,
+    marginLeft: 10,
+  },
+
+  /*deleteButton: {
     backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
@@ -126,7 +113,7 @@ const styles = StyleSheet.create({
   deleteText: {
     color: 'white',
     fontWeight: 'bold',
-  },
+  },*/
 
   distanceContainer: {
     flexDirection: 'row',
@@ -154,13 +141,11 @@ const styles = StyleSheet.create({
   },
 
   radioButton: {
-    //flex: 1,
     flexDirection: 'row',
     alignItems: "center",
     paddingLeft: 20,
     color: '#98246d',
     margin: 5
-    //justifyContent: "center",
   },
 
   radioContainer: {

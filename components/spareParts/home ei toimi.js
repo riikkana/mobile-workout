@@ -44,7 +44,7 @@ export default function HomeScreen() {
             return;
         }
         try {
-            const workout = { date, sport, distance, duration };
+            const workout = { id: Date.now(), date, sport, distance, duration };
             const existingWorkouts = await AsyncStorage.getItem('workouts');
             let newWorkouts = existingWorkouts ? JSON.parse(existingWorkouts) : [];
             newWorkouts.push(workout);
@@ -75,7 +75,6 @@ export default function HomeScreen() {
             <View>
                 <Button style={styles.button}
                     mode='contained'
-                    title="Save Workout" 
                     onPress={saveWorkout}>
                     Add workout
                 </Button>
